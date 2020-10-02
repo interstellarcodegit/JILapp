@@ -163,7 +163,7 @@ export function HomeScreen({ navigation }) {
          style={{
          width:'100%',
          flex:1,
-         }}>
+         }}> 
     <View style={styles.profileView
     }>
     <Text>Welcome {user}</Text>
