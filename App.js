@@ -13,16 +13,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import  { addNotes,PlayScreen, HomeScreen} from './screens';
-import {LoginScreen, addUpdate, SignUpScreen} from './auth'
+import  {PlayScreen, HomeScreen} from './screens';
+import {LoginScreen, SignUpScreen} from './auth'
+import { addUpdate} from './updates'
 import {styles} from './styles';
+import {addNotes} from './notes';
+
 import {Ionicons, Entypo} from '@expo/vector-icons'
 //variables
 
 const Tab = createBottomTabNavigator();
 const stack= createStackNavigator();
 const Draw= createDrawerNavigator();
-var headerbgColor= '#0c1e52';
+var headerbgColor= 'rgba(0,0,30,0.85)';
 
 //views
 function DrawView(){
@@ -43,24 +46,24 @@ function DrawView(){
 function Feeder() {
   return (
     <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-    
-                if (route.name === 'Home') {
-                  iconName = 'home'
-                } else if (route.name === 'Listen') {
-                  iconName ='radio';
-                }
-    
-                // You can return any component that you like here!
-                return <Entypo name={iconName} size={size} color={color} />;
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = 'home'
+        } else if (route.name === 'Listen') {
+          iconName ='radio';
+        }
+
+        // You can return any component that you like here!
+        return <Entypo name={iconName} size={size} color={color} />;
     },
     })
     }
     tabBarOptions = {
         {
-          activeTintColor: 'tomato',
+          activeTintColor: 'aqua',
           inactiveTintColor: 'gray',
         }
       } >
@@ -135,7 +138,7 @@ name='Home' component={Feeder}/>
     <stack.Screen 
     options = {
       {
-        title: 'Feed',
+        title: 'Notes',
         headerStyle: {
           backgroundColor: headerbgColor,
         },

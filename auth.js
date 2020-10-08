@@ -62,6 +62,14 @@ export function LoginScreen({navigation}){
   const [errorText, setErrorText]= React.useState('');
   
   return(
+    <ImageBackground
+          source={require('./assets/Bible.jpg')}
+         style={{
+            flex: 1,
+            resizeMode: "cover",
+            justifyContent: "center"
+          }}
+          >
     <View style={styles.LoginContainer}>
   <Image
   style={styles.splashImg}
@@ -154,6 +162,7 @@ export function LoginScreen({navigation}){
      
      ></View>
   </View>
+  </ImageBackground>
     );
 }
 const iconicButton=(props)=>{
@@ -184,7 +193,16 @@ const [Password, setPassword] = React.useState('')
 const [showPassword, setShowPassword]= React.useState(true);
 const [ConfirmPassword, setConfirmPassword]=React.useState('');
 return (
-  <View style={styles.LoginContainer}>
+   <ImageBackground
+      source={require('./assets/Bible.jpg')}
+     style={{
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+      }}
+      >
+<View style={styles.LoginContainer}>
+   
   <Image
   style={styles.splashImg}
   source={require('./assets/splash.png')}
@@ -279,103 +297,8 @@ return (
            <Text style={styles.alertText}>
       {alertText}   {checkText}
     </Text>
-  </View>
+    </View>
+  </ImageBackground>
+  
 );
 }
-const url1='http://127.0.0.1:9000/apis/updates/';
-
-export function addUpdate({ navigation }) {
-  const [alertText , setAlertText]= React.useState('')
-  const [title , setTitle]= React.useState('')
-  const [description , setDescription]= React.useState('')
-  const [otherdesc , setOtherDesc]= React.useState('')
-    const [errortxt , setErrortxt]= React.useState('')
-  return (
-    <View style={styles.defView}>
-    <SafeAreaView>
-    <Text style={[
-    styles.primeText,
-    {
-      marginBottom:50,
-    }
-    ]}>
-    Add Update
-    </Text>
-    <TextInput
-    style={styles.passInput}
-    placeholder='Enter Title'
-    placeholderTextColor={placeholderColor}
-    onChangeText={(text)=>{
-      setTitle(text)
-    }}
-    />
-    <TextInput
-    style={styles.passInput}
-    placeholder='Enter Description'
-    placeholderTextColor={placeholderColor}
-    multiline={true}
-    onChangeText = {
-      (text) => {
-        setDescription(text)
-      }
-    }
-      />
-   <TextInput
-      style={styles.passInput}
-      placeholder='Enter Image Link(optional)'
-      multiline={true}
-      placeholderTextColor={placeholderColor}
-      onChangeText = {
-        (text) => {
-          setOtherDesc(text)
-        }
-      }
-     />
-     <TouchableHighlight>
-    <Text
-    style={styles.submitButton}
-    onPress={
-      (value) => {
-        if (title == '' || description == '' || otherdesc == '') {
-          setAlertText('*All fields must be entered');
-        }
-        else if (title !== '' && description !== '' && otherdesc !== ''){
-          setAlertText('');
-          axios.get(url1, {
-            auth:Auth
-          }).then((response) => {
-           const updates = response.data;
-            updates.map((names) => {
-           if (title == names.title) {
-                setErrortxt('title exists');
-              }
-            else {
-                axios.post(url1, {
-                    'title': title,
-                    'description': description,
-                    'imageLink': otherdesc
-    
-                  })
-                  .then((response) => {
-                    alert(response);
-                    
-                  })
-                  .catch((error) => {
-                    alert('there seems to have been an error ')
-                  });
-              }
-            })
-          })
-          
-        }
-   }
-    }
-    
-    >Submit Update</Text>
-    </TouchableHighlight>
-    </SafeAreaView>
-    </View>
-  )
-}
-
-

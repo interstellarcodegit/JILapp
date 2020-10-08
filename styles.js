@@ -14,7 +14,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //intialisation
-const bgColor='black';
+const bgColor='rgba(0,0,0,0.5)';
 export   const styles = StyleSheet.create({
 submitbtn:{
 width:120,
@@ -27,8 +27,23 @@ height:30,
 	marginTop:10,
 	backgroundColor:'rgba(0,0,0,0.5)',
 },
+	stylishBtn:{
+          height:30,
+          backgroundColor:'rgba(0,0,0,0.7)',
+          color:'chartreuse',
+          borderRadius:5,
+	  minWidth:50,
+          marginLeft:10,
+	  justifyContent:'center',
+	  alignItems:'center',
+	
+	},
+	stylishTxt:{
+	color:'chartreuse',
+	paddingLeft:2,
+	},
  defView:{
-	 backgroundColor:'#1A34ff',
+	 backgroundColor:'rgba(0,0,0,0.7)',
 	 flex:1,
 	},
  addNote:{
@@ -36,8 +51,8 @@ height:30,
   borderBottomColor:'aqua',
 },
  newsImg:{
-  height:200,
-  width:100,
+  height:150,
+  width:150,
   marginLeft:15,
   borderRadius:20,
 
@@ -63,7 +78,7 @@ height:30,
   },
   submitButton:{
 	  borderRadius:6,
-	  width:120,                                                      height:30,                                                      justifyContent:'center',                                        padding:'1%',                                                   paddingLeft:8,                                                  borderRadius:8,
+	  width:120,                          height:30,                                                      justifyContent:'center',                                        padding:'1%',                                                   paddingLeft:8,                                                  borderRadius:8,
 	  color:'chartreuse',
 	  marginTop:10,
   	  backgroundColor:'rgba(0,0,0,0.5)',
@@ -103,14 +118,11 @@ elevation: 12,
  splashImg:{
   height:64,
   width:64,
-  
 
 },
   
   alertText:{
   color:'red',
-
-
 },
   profileView:{
    justifyContent:'space-between',
@@ -141,7 +153,7 @@ searchIcon:{
 },
 splashView:{
   
- maxHeight:200,
+ maxHeight:100,
  
 },
   topImg:{
@@ -150,7 +162,7 @@ splashView:{
 },
   passInput:{
 	 backgroundColor:'transparent',
-         borderBottomColor:'aqua',
+         borderBottomColor:'chartreuse',
  	 borderBottomWidth:1,
  	 width: 250,
 	 paddingTop:15,
