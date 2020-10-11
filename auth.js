@@ -29,8 +29,8 @@ const theme={
   textColor:'chartreuse',
   backgroundColor:'black',
 };
-const url='http://127.0.0.1:9000/apis/auth/login';
-const registerUrl='http://127.0.0.1:9000/apis/auth/register';
+const url='http://interstellarcg.pythonanywhere.com/apis/auth/login';
+const registerUrl='http://interstellarcg.pythonanywhere.com/apis/auth/register';
 const Userdata= {
   'name':'Interstellar',
   'email':'interstellarcg@gmail.com',
