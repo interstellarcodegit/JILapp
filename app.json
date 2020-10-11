@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "prep",
-    "slug": "prep",
+    "name": "PrepareTheWay",
+    "slug": "prepareapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,10 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+    "supportsTablet":true,
+      "bundleIdentifier": "com.interstellarcode.PrepareTheWay",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.interstellarcode.PrepareTheWay",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/splash.png"
+	    }
   }
 }
