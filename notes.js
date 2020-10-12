@@ -37,7 +37,7 @@ export  function addNotes(props) {
   const [notesArray, setNotesArray]= React.useState([])
   const [showNotes, setShowNotes]= React.useState(true)
   const [showNotestxt, setShowNotestxt]= React.useState('Show')
-  
+  const [getNote,setGetNote]= React.useState([])
   const [noOfNotes, setNoOfNotes]=React.useState();
   const [notes, setNotes]=React.useState('');
   const notelist=[];
@@ -60,19 +60,16 @@ export  function addNotes(props) {
       duration: 1000
     }).start();
   };
-  React.useRef(
-    fadeIn()
-    )
+  
     return (
     <ImageBackground
-              source={require('./assets/Bible.jpg')}
-             style={{
-                flex: 1,
-                resizeMode: "cover",
-                justifyContent: "center"
-              }}
-              >
-    
+        source={require('./assets/Bible.jpg')}
+       style={{
+          flex: 1,
+          resizeMode: "cover",
+          justifyContent: "center"
+        }}
+        >
     <View
     style={{
       backgroundColor:'rgba(0,0,0,0.5)',
@@ -84,37 +81,42 @@ export  function addNotes(props) {
         shadowOpacity: 1,
         shadowRadius: 50,
       
-        elevation: 12,
+        elevation: 1200,
     }}
     >
-    
     <TextInput
-    style={styles.shadowInput}
+    style={{
+      color:'white'
+    }}
     multiline = { true }
     value= {notes}
     clearTextOnFocus={true}
     onChangeText={text => setNotes(text)}
-    
     caretHidden = { false }
     autoCorrect = { true }
     placeholderTextColor = 'blue'
     style={styles.addNote}
     placeholder='Write your notes here'
     />
-    <Text
+    <View 
     style={{
-    fontSize:15,
-    color:'green',
+      flexDirection:'row',
     }}
+    >
+    <Text
+    style={styles.stylishBtn}
     onPress={
     
     async (value) => {
         const firstNote = JSON.stringify(intialNote);
         
         try {
-          const note1 = await AsyncStorage.getItem('note1')
-          if (note1 !== null) {
-            var getNote = JSON.parse(note1)
+          const note1 = await AsyncStorage.getItem('note1');
+          if (note1===null){
+            
+          }
+          else if (note1 !== null) {
+            setGetNote(JSON.parse(note1));
             const initValue = getNote.length
             if (notes !== '' && notes !== ""){
               getNote.push(notes)
@@ -128,7 +130,7 @@ export  function addNotes(props) {
               alert('Note cant be empty');
             }
             try {
-              await AsyncStorage.setItem('note1', afterNote)
+              await AsyncStorage.setItem('note1', notesArray)
             } catch (e) {
               alert(e);
             }
@@ -145,7 +147,9 @@ export  function addNotes(props) {
         }}
     }>+ Add</Text>
     
-    <Text onPress={
+    <Text
+    style={styles.stylishBtn}
+    onPress={
       async () => {
         try {
           const note1 = await AsyncStorage.getItem('note1')
@@ -159,10 +163,7 @@ export  function addNotes(props) {
     }>Update</Text>
     
         <Text 
-    style={{
-      fontSize:15,
-      color:'chartreuse',
-    }}  
+  style={styles.stylishBtn}
     onPress={
       async()=>{
         try {
@@ -187,8 +188,9 @@ export  function addNotes(props) {
       }
     }
     >
-    {showNotestxt}Notes
+    {showNotestxt}
     </Text>
+    </View>
     </View>
     <ScrollView>
   {
@@ -202,7 +204,7 @@ export  function addNotes(props) {
          }>
          <View
          style={{
-           backgroundColor:'rgba(0,0,0,0.7)',
+           backgroundColor:'rgba(0,0,0,0.9)',
            minHeight:50,
            borderBottomColor:'gray',
            marginTop:2,

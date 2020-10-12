@@ -84,15 +84,8 @@ height:30,
   	  backgroundColor:'rgba(0,0,0,0.5)',
   },
  shadowInput:{
-  shadowColor: "#000",
- shadowOffset: {
-	width: 0,
-	height: 6,
-},
-shadowOpacity: 0.37,
-shadowRadius: 7.49,
-
-elevation: 12,
+  elevation:1000,
+	 color:'chartreuse'
 },
  newsWrapper:{
 },
