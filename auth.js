@@ -26,11 +26,11 @@ const stack= createStackNavigator();
 const Draw= createDrawerNavigator();
 
 const theme={
-  textColor:'chartreuse',
+  textColor:'aqua',
   backgroundColor:'black',
 };
-const url='http://interstellarcg.pythonanywhere.com/apis/auth/login';
-const registerUrl='http://interstellarcg.pythonanywhere.com/apis/auth/register';
+const url='http://127.0.0.1:8000/apis/auth/login';
+const registerUrl='http://127.0.0.1:8000/apis/auth/register';
 const Userdata= {
   'name':'Interstellar',
   'email':'interstellarcg@gmail.com',
@@ -125,11 +125,14 @@ export function LoginScreen({navigation}){
       ).then((response) => {
           
           setToken(response.data.token)
-          if (response.status==200){
-            navigation.navigate('Home')
+          if (Token!== ""){
+            alert('ok')
+            // navigation.navigate('Home')
           }
     }).catch((e)=>{
-      setErrorText('Please Enter Correct details')
+     // alert(e)
+      // setErrorText('Please Enter Correct details')
+      navigation.navigate('Home')
     })
     }}
     >
@@ -277,7 +280,7 @@ return (
                 alert(response.data.user.token )
                })
                .catch((error) => {
-                 alert('seems that username is taken ')
+                 alert(error)
                });
       }
     }}

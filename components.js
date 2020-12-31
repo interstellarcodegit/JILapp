@@ -1,4 +1,4 @@
- import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as FileSystem from 'expo-file-system';
@@ -16,26 +16,28 @@ TouchableOpacity,
 ScrollView,
 Text, View , TextInput} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 //import {LoginScreen, SignUpScreen} from './auth';
 import {styles }from './styles';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Ionicons, Entypo, AntDesign} from '@expo/vector-icons'
+import {Ionicons, Entypo,Foundation, AntDesign, FontAwesome} from '@expo/vector-icons'
 import { WebView } from "react-native-webview";
 const Tab = createBottomTabNavigator();
 const stack= createStackNavigator();
 const Draw= createDrawerNavigator();
 
 export var theme={
-  textColor:'chartreuse',
+  textColor:'rgb(219, 37, 255)',
   backgroundColor:'rgba(0,0,0,0.8)',
-  inputColor:'chartreuse'
+  inputColor:'rgb(219, 37, 255)'
   
 }
-export function ScrollElement(){
+export function ScrollElement(props){
+  const [image, setImage]= React.useState(props.imgSrc);
+  var  imgsource = 'https://pbs.twimg.com/media/EqQefotUwAEKpV9?format=jpg&name=medium';
   return(
     <View style={
       {
@@ -50,11 +52,16 @@ export function ScrollElement(){
     }}>
         <Image
         style={styles.newsImg}
-        source={require('./assets/shalin.jpeg')}
+        source={{uri:props.imgSrc}}
         />
       <Text style={{
-        color:'white'
-      }}>A quick and simplified answer is that Lorem Ipsum refers to text that the DTP (Desktop Publishing) industry use as replacement text when the real text is not available. ... Lorem Ipsum is dummy text which has no meaning however looks very similar to real text.</Text>
+        marginTop: 25,
+        padding:5,
+        color:'rgb(221, 168, 231)'
+      }}>Baby Shalin was brought to a three-day Christian Revival Meeting held in Kenya's
+       Kakamega County from 31st August to 2nd September 2012, presided over by The Man of God, 
+       Prophet Dr Owuor. She was in a pitiful state.  
+       #TheSweetStoryOfJesus </Text>
       </View>
         <View style={{
           flexDirection:'row',
@@ -83,26 +90,50 @@ export const PlayIcon= styled.View`
  height:100px;
  width:60px;
  `;
+// function SelectIcon(props){
+//   if (props.iconType=='Entypo'){
+//     return(
+//       <Entypo name={props.iconname} size={props.height-5} color="rgb(201, 153, 255)" />
+//     )
+//   }
+//   if (props.iconType=='Foundation'){
+//     return(
+//       <Foundation name={props.iconname} size={props.height-5} color="rgb(201, 153, 255)" />
+//     )
+//   }
+//   if (props.iconType=='FontAwesome'){
+//     return(
+//       <FontAwesome name={props.iconname} size={props.height-5} color="rgb(201, 153, 255)" />
+//     )
+//   }
+// }
 export  function NavButton(props, {navigation}) {
    return(
      <View
      onPress={props.onPress}
      style={
      { 
-       backgroundColor:props.bgColor,
-       height:props.height-1,
-       minWidth:60,
+      flexDirection:'row',
+       width:65,
        opacity:props.opacity,
        alignItems:'center',
+       alignContent:'center',
        borderRadius:props.radius,
-       paddingLeft:3,       
+       paddingLeft:3,
+
      }
      }
      >
+
+    {/* <SelectIcon iconType={props.iconType} iconname={props.iconname}/> */}
+   
      <Text
      style={{
+       
+       fontSize:props.height/2,
        color:props.color,
-       height:props.height-2
+       height:props.height-2,
+       marginTop:7
        
      }}
      onPress={props.onPress}
@@ -113,7 +144,7 @@ export  function NavButton(props, {navigation}) {
      
      
      );
- }
+    }
 
 
 
